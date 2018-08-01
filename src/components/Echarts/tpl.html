@@ -11,8 +11,6 @@
       width: 100%;
       margin: 0;
       padding: 0;
-    // overflow: hidden;
-
     }
     #main {
       height: 100%;
@@ -79,13 +77,15 @@
 <body>
 <div id="main" ></div>
 <script>
-  var myChart = echarts.init(document.getElementById('main'));
+  myChart = echarts.init(document.getElementById('main'));
 
   myChart.on('legendselectchanged',function(params){
+      params = params || {};
       if(typeof window.postMessage  === 'function'){
         window.postMessage(JSON.stringify(params))
       }
   })
+
   function changeDigit(num = 0, digit = 2) {
     if (isNaN(num)) {
       return num;
